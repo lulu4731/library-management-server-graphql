@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ReceiptInput = exports.IReceiptDetail = exports.MutationResponseReceipt = exports.LiquidationInput = exports.MutationResponseLiquidation = exports.TitleInput = exports.MutationResponseTitle = exports.CompanyInput = exports.MutationResponseCompany = exports.AuthorInput = exports.ReaderInput = exports.MutationResponseCategory = exports.MutationResponse = void 0;
+exports.MutationResponseBorrows = exports.MutationResponseBooks = exports.MutationResponseLiquidations = exports.ReceiptInput = exports.IReceiptDetail = exports.MutationResponseReceipt = exports.LiquidationInput = exports.MutationResponseLiquidation = exports.TitleInput = exports.MutationResponseTitle = exports.CompanyInput = exports.MutationResponseCompany = exports.AuthorInput = exports.ReaderInput = exports.MutationResponseCategory = exports.MutationResponse = void 0;
 const readers_1 = require("../entities/readers");
 const type_graphql_1 = require("type-graphql");
 const MutationRespone_1 = require("./MutationRespone");
@@ -19,6 +19,9 @@ const Category_1 = require("../entities/Category");
 const Company_1 = require("../entities/Company");
 const Titles_1 = require("../entities/Titles");
 const Receipt_1 = require("../entities/Receipt");
+const Liquidation_1 = require("../entities/Liquidation");
+const Book_1 = require("../entities/Book");
+const BookBorrow_1 = require("../entities/BookBorrow");
 let MutationResponse = class MutationResponse {
 };
 __decorate([
@@ -233,4 +236,34 @@ ReceiptInput = __decorate([
     (0, type_graphql_1.InputType)()
 ], ReceiptInput);
 exports.ReceiptInput = ReceiptInput;
+let MutationResponseLiquidations = class MutationResponseLiquidations {
+};
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", Liquidation_1.Liquidations)
+], MutationResponseLiquidations.prototype, "data", void 0);
+MutationResponseLiquidations = __decorate([
+    (0, type_graphql_1.ObjectType)({ implements: MutationRespone_1.IMutationResponse })
+], MutationResponseLiquidations);
+exports.MutationResponseLiquidations = MutationResponseLiquidations;
+let MutationResponseBooks = class MutationResponseBooks {
+};
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", Book_1.Book)
+], MutationResponseBooks.prototype, "data", void 0);
+MutationResponseBooks = __decorate([
+    (0, type_graphql_1.ObjectType)({ implements: MutationRespone_1.IMutationResponse })
+], MutationResponseBooks);
+exports.MutationResponseBooks = MutationResponseBooks;
+let MutationResponseBorrows = class MutationResponseBorrows {
+};
+__decorate([
+    (0, type_graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", BookBorrow_1.BookBorrow)
+], MutationResponseBorrows.prototype, "data", void 0);
+MutationResponseBorrows = __decorate([
+    (0, type_graphql_1.ObjectType)({ implements: MutationRespone_1.IMutationResponse })
+], MutationResponseBorrows);
+exports.MutationResponseBorrows = MutationResponseBorrows;
 //# sourceMappingURL=interface.js.map

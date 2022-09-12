@@ -31,6 +31,8 @@ const Verification_1 = require("./entities/Verification");
 const BorrowDetails_1 = require("./entities/BorrowDetails");
 const receipt_1 = require("./resolvers/receipt");
 const book_1 = require("./resolvers/book");
+const liquidations_1 = require("./resolvers/liquidations");
+const borrow_1 = require("./resolvers/borrow");
 const main = async () => {
     await (0, typeorm_1.createConnection)({
         type: 'postgres',
@@ -46,7 +48,7 @@ const main = async () => {
     const apolloServer = new apollo_server_express_1.ApolloServer({
         schema: await (0, type_graphql_1.buildSchema)({
             validate: false,
-            resolvers: [librarian_1.LibrarianResolver, readers_2.ReadersResolver, authors_1.AuthorsResolver, category_1.CategoryResolver, company_1.CompanyResolver, titles_1.TitlesResolver, receipt_1.ReceiptResolver, book_1.BooksResolver]
+            resolvers: [librarian_1.LibrarianResolver, readers_2.ReadersResolver, authors_1.AuthorsResolver, category_1.CategoryResolver, company_1.CompanyResolver, titles_1.TitlesResolver, receipt_1.ReceiptResolver, book_1.BooksResolver, liquidations_1.LiquidationsResolver, borrow_1.BorrowsResolver]
         }),
         plugins: [
             (0, apollo_server_core_1.ApolloServerPluginDrainHttpServer)({ httpServer }),

@@ -30,6 +30,8 @@ import { Verification } from './entities/Verification';
 import { BorrowDetails } from './entities/BorrowDetails';
 import { ReceiptResolver } from './resolvers/receipt';
 import { BooksResolver } from './resolvers/book';
+import { LiquidationsResolver } from './resolvers/liquidations';
+import { BorrowsResolver } from './resolvers/borrow';
 
 const main = async () => {
     await createConnection({
@@ -47,7 +49,7 @@ const main = async () => {
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
             validate: false,
-            resolvers: [LibrarianResolver, ReadersResolver, AuthorsResolver, CategoryResolver, CompanyResolver, TitlesResolver, ReceiptResolver, BooksResolver]
+            resolvers: [LibrarianResolver, ReadersResolver, AuthorsResolver, CategoryResolver, CompanyResolver, TitlesResolver, ReceiptResolver, BooksResolver, LiquidationsResolver, BorrowsResolver]
         }),
         plugins: [
             ApolloServerPluginDrainHttpServer({ httpServer }),

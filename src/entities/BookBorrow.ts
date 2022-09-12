@@ -17,12 +17,12 @@ export class BookBorrow extends BaseEntity {
 
 
     @Field(() => Readers, { nullable: true })
-    @ManyToOne(() => Readers, (reader: Readers) => reader.bookBorrow)
+    @ManyToOne(() => Readers, (reader: Readers) => reader.bookBorrow, { eager: true })
     @JoinColumn({ name: 'id_reader' })
     reader: Readers
 
     @Field(() => Librarian, { nullable: true })
-    @ManyToOne(() => Librarian, (librarian: Librarian) => librarian.bookBorrow)
+    @ManyToOne(() => Librarian, (librarian: Librarian) => librarian.bookBorrow, { eager: true })
     @JoinColumn({ name: 'id_librarian' })
     librarian: Librarian
 

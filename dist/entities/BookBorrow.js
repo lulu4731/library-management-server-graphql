@@ -29,13 +29,13 @@ __decorate([
 ], BookBorrow.prototype, "create_time", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => readers_1.Readers, { nullable: true }),
-    (0, typeorm_1.ManyToOne)(() => readers_1.Readers, (reader) => reader.bookBorrow),
+    (0, typeorm_1.ManyToOne)(() => readers_1.Readers, (reader) => reader.bookBorrow, { eager: true }),
     (0, typeorm_1.JoinColumn)({ name: 'id_reader' }),
     __metadata("design:type", readers_1.Readers)
 ], BookBorrow.prototype, "reader", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => Librarian_1.Librarian, { nullable: true }),
-    (0, typeorm_1.ManyToOne)(() => Librarian_1.Librarian, (librarian) => librarian.bookBorrow),
+    (0, typeorm_1.ManyToOne)(() => Librarian_1.Librarian, (librarian) => librarian.bookBorrow, { eager: true }),
     (0, typeorm_1.JoinColumn)({ name: 'id_librarian' }),
     __metadata("design:type", Librarian_1.Librarian)
 ], BookBorrow.prototype, "librarian", void 0);

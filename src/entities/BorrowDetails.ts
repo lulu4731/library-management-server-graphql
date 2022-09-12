@@ -7,13 +7,13 @@ import { Librarian } from "./Librarian";
 @ObjectType()
 @Entity('borrow_details')
 export class BorrowDetails extends BaseEntity {
-    @Field()
-    @PrimaryColumn("uuid")
-    id_borrow: string
+    // @Field()
+    // @PrimaryColumn("uuid")
+    // id_borrow: string
 
-    @Field()
-    @PrimaryColumn("uuid")
-    id_book: string
+    // @Field()
+    // @PrimaryColumn("uuid")
+    // id_book: string
 
     @Field()
     @Column({ type: "timestamp without time zone", default: () => "CURRENT_TIMESTAMP" })
@@ -37,12 +37,14 @@ export class BorrowDetails extends BaseEntity {
     librarian: Librarian
 
     @Field(() => Book, { nullable: true })
-    @JoinColumn({ name: 'book' })
+    @PrimaryColumn("uuid")
+    @JoinColumn({ name: 'books' })
     @ManyToOne(() => Book, (books: Book) => books.borrowToBook)
     books!: Book
 
     @Field(() => BookBorrow, { nullable: true })
-    @JoinColumn({ name: 'book_borrow' })
+    @PrimaryColumn("uuid")
+    @JoinColumn({ name: 'bookBorrow' })
     @ManyToOne(() => BookBorrow, (book_borrow: BookBorrow) => book_borrow.borrowToBook)
     bookBorrow!: BookBorrow
 }

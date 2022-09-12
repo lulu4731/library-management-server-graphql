@@ -17,17 +17,17 @@ export class Book extends BaseEntity {
     position: string
 
     @Field(() => Liquidations, { nullable: true })
-    @ManyToOne(() => Liquidations, (liquidation: Liquidations) => liquidation.books)
+    @ManyToOne(() => Liquidations, (liquidation: Liquidations) => liquidation.books, {eager: true})
     @JoinColumn({ name: 'id_liquidation' })
     id_liquidation: Liquidations
 
     @Field(() => Titles, { nullable: true })
-    @ManyToOne(() => Titles, (title: Titles) => title.books)
+    @ManyToOne(() => Titles, (title: Titles) => title.books, {eager: true, cascade: true})
     @JoinColumn({ name: 'id_titles' })
     id_titles: string
 
     @Field(() => BookStatus, { nullable: true })
-    @ManyToOne(() => BookStatus, (bookStatus: BookStatus) => bookStatus.books)
+    @ManyToOne(() => BookStatus, (bookStatus: BookStatus) => bookStatus.books, {eager: true, cascade: true})
     @JoinColumn({ name: 'id_status' })
     bookStatus: string
 

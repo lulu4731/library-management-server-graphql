@@ -30,19 +30,19 @@ __decorate([
 ], Book.prototype, "position", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => Liquidation_1.Liquidations, { nullable: true }),
-    (0, typeorm_1.ManyToOne)(() => Liquidation_1.Liquidations, (liquidation) => liquidation.books),
+    (0, typeorm_1.ManyToOne)(() => Liquidation_1.Liquidations, (liquidation) => liquidation.books, { eager: true }),
     (0, typeorm_1.JoinColumn)({ name: 'id_liquidation' }),
     __metadata("design:type", Liquidation_1.Liquidations)
 ], Book.prototype, "id_liquidation", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => Titles_1.Titles, { nullable: true }),
-    (0, typeorm_1.ManyToOne)(() => Titles_1.Titles, (title) => title.books),
+    (0, typeorm_1.ManyToOne)(() => Titles_1.Titles, (title) => title.books, { eager: true, cascade: true }),
     (0, typeorm_1.JoinColumn)({ name: 'id_titles' }),
     __metadata("design:type", String)
 ], Book.prototype, "id_titles", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => BookStatus_1.BookStatus, { nullable: true }),
-    (0, typeorm_1.ManyToOne)(() => BookStatus_1.BookStatus, (bookStatus) => bookStatus.books),
+    (0, typeorm_1.ManyToOne)(() => BookStatus_1.BookStatus, (bookStatus) => bookStatus.books, { eager: true, cascade: true }),
     (0, typeorm_1.JoinColumn)({ name: 'id_status' }),
     __metadata("design:type", String)
 ], Book.prototype, "bookStatus", void 0);

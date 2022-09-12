@@ -19,16 +19,6 @@ let BorrowDetails = class BorrowDetails extends typeorm_1.BaseEntity {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
-    (0, typeorm_1.PrimaryColumn)("uuid"),
-    __metadata("design:type", String)
-], BorrowDetails.prototype, "id_borrow", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    (0, typeorm_1.PrimaryColumn)("uuid"),
-    __metadata("design:type", String)
-], BorrowDetails.prototype, "id_book", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)({ type: "timestamp without time zone", default: () => "CURRENT_TIMESTAMP" }),
     __metadata("design:type", Date)
 ], BorrowDetails.prototype, "expired", void 0);
@@ -55,13 +45,15 @@ __decorate([
 ], BorrowDetails.prototype, "librarian", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => Book_1.Book, { nullable: true }),
-    (0, typeorm_1.JoinColumn)({ name: 'book' }),
+    (0, typeorm_1.PrimaryColumn)("uuid"),
+    (0, typeorm_1.JoinColumn)({ name: 'books' }),
     (0, typeorm_1.ManyToOne)(() => Book_1.Book, (books) => books.borrowToBook),
     __metadata("design:type", Book_1.Book)
 ], BorrowDetails.prototype, "books", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => BookBorrow_1.BookBorrow, { nullable: true }),
-    (0, typeorm_1.JoinColumn)({ name: 'book_borrow' }),
+    (0, typeorm_1.PrimaryColumn)("uuid"),
+    (0, typeorm_1.JoinColumn)({ name: 'bookBorrow' }),
     (0, typeorm_1.ManyToOne)(() => BookBorrow_1.BookBorrow, (book_borrow) => book_borrow.borrowToBook),
     __metadata("design:type", BookBorrow_1.BookBorrow)
 ], BorrowDetails.prototype, "bookBorrow", void 0);

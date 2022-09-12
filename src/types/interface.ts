@@ -7,6 +7,9 @@ import { Category } from "../entities/Category";
 import { Company } from "../entities/Company";
 import { Titles } from "../entities/Titles";
 import { Receipt } from "../entities/Receipt";
+import { Liquidations } from "../entities/Liquidation";
+import { Book } from "../entities/Book";
+import { BookBorrow } from "../entities/BookBorrow";
 
 @ObjectType({ implements: IMutationResponse })
 export class MutationResponse implements IMutationResponse {
@@ -166,7 +169,7 @@ export class MutationResponseReceipt implements IMutationResponse {
 export class IReceiptDetail {
     @Field()
     id_titles: string
-    
+
     @Field()
     number_book: number
 
@@ -178,4 +181,37 @@ export class IReceiptDetail {
 export class ReceiptInput {
     @Field(() => [IReceiptDetail])
     receiptDetails: IReceiptDetail[]
+}
+
+//Liquidations
+@ObjectType({ implements: IMutationResponse })
+export class MutationResponseLiquidations implements IMutationResponse {
+    code: number
+    success: boolean
+    message?: string
+
+    @Field({ nullable: true })
+    data?: Liquidations
+}
+
+//Book
+@ObjectType({ implements: IMutationResponse })
+export class MutationResponseBooks implements IMutationResponse {
+    code: number
+    success: boolean
+    message?: string
+
+    @Field({ nullable: true })
+    data?: Book
+}
+
+//borrow
+@ObjectType({ implements: IMutationResponse })
+export class MutationResponseBorrows implements IMutationResponse {
+    code: number
+    success: boolean
+    message?: string
+
+    @Field({ nullable: true })
+    data?: BookBorrow
 }
